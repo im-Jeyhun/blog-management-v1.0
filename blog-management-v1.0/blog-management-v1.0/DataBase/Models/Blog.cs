@@ -50,3 +50,4 @@ namespace blog_management_v1._0.DataBase.Models
             return $"[{CreatedAt}][{Id}][{Owner.Name}{Owner.LastName}] \n ==={Title}=== \n {Content}";
         }
     }
+}
