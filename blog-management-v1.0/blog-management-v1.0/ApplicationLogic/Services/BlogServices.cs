@@ -31,9 +31,13 @@ namespace blog_management_v1._0.ApplicationLogic.Services
                     Console.WriteLine(blog.GetBlogInfo());
                     foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
                     {
-                        Console.WriteLine(counter +"."+ comment.GetCommentInfo());
+                        Console.WriteLine(counter + "." + comment.GetCommentInfo());
                         counter++;
                     }
+                }
+                else
+                {
+                    Console.WriteLine("Aprroved blogs couldnt finded");
                 }
 
             }
@@ -106,15 +110,20 @@ namespace blog_management_v1._0.ApplicationLogic.Services
             string blogCode = Console.ReadLine();
 
             Blog findedBlog = blogRepo.GetById(blogCode);
-
+            int counter = 1;
             if (findedBlog != null)
             {
                 Console.WriteLine(findedBlog.GetBlogInfo());
                 foreach (Comment comment in commentRepo.GetAll(c => c.Blog == findedBlog))
                 {
-                    Console.WriteLine(comment.GetCommentInfo());
+                    Console.WriteLine(counter + "." + comment.GetCommentInfo());
+                    counter++;
                 }
 
+            }
+            else
+            {
+                Console.WriteLine("Blog couldn finded...");
             }
 
         }
@@ -127,12 +136,18 @@ namespace blog_management_v1._0.ApplicationLogic.Services
             {
                 Console.Write("Pls enter suitable title : ");
                 string title = Console.ReadLine();
+                int counter = 1;
                 foreach (Blog blog in blogRepo.GetAll())
                 {
                     if (blog.Title.Contains(title))
                     {
-                        Console.WriteLine(blog.GetBlogFullInfo());
-                        foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog)) ;
+                        Console.WriteLine(blog.GetBlogInfo());
+                        foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
+                        {
+                            Console.WriteLine(counter + "." + comment.GetCommentInfo());
+                            counter++;
+                        }
+
                     }
                     else
                     {
@@ -145,12 +160,17 @@ namespace blog_management_v1._0.ApplicationLogic.Services
             {
                 Console.Write("Pls enter blog owner name : ");
                 string blogOwner = Console.ReadLine();
+                int counter = 1;
                 foreach (Blog blog in blogRepo.GetAll())
                 {
                     if (blog.Owner.Name.Contains(blogOwner))
                     {
-                        Console.WriteLine(blog.GetBlogFullInfo());
-                        foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog)) ;
+                        Console.WriteLine(blog.GetBlogInfo());
+                        foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
+                        {
+                            Console.WriteLine(counter + "." + comment.GetCommentInfo());
+                            counter++;
+                        };
                     }
                     else
                     {

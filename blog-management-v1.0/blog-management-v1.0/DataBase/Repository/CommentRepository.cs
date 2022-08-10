@@ -12,7 +12,7 @@ namespace blog_management_v1._0.DataBase.Repository
         static CommentRepository()
         {
             BlogRepository blogRepository = new BlogRepository();
-            Entries.Add(new Comment(blogRepository.Get(a => a.Id == "BLCode"), UserRepository.GetByEmail("ceyhun@gmail.com"), "Salam"));
+            Entries.Add(new Comment(blogRepository.Get(a => a.Id == "BL10545"), UserRepository.GetByEmail("ceyhun@gmail.com"), "Salam"));
         }
     
 

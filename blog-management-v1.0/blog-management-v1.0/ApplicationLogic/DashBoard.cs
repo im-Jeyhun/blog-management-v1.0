@@ -226,6 +226,7 @@ namespace blog_management_v1._0.ApplicationLogic
                 {
 
                     List<Blog> blogs = blogrepo.GetAll();
+                    CommentRepository commentRepository = new CommentRepository();
 
                     foreach (Blog blog in blogs)
                     {
@@ -234,10 +235,10 @@ namespace blog_management_v1._0.ApplicationLogic
                             if (blog.BlogStatus == BlogStatus.Created)
                             {
                                 Console.WriteLine(blog.GetBlogInfo());
-                                foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
-                                {
-                                    Console.WriteLine(comment.GetCommentInfo());
-                                }
+                                //foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
+                                //{
+                                //    Console.WriteLine(comment.GetCommentInfo());
+                                //}
                             }
                         }
 
@@ -262,7 +263,7 @@ namespace blog_management_v1._0.ApplicationLogic
                         Console.WriteLine("Blog not found or Blog already Approved or Rejected");
                     }
                 }
-                else if(command == "/reject-blog")
+                else if (command == "/reject-blog")
                 {
                     Console.Write("Insert Blog Code for Reject it : ");
                     string blogCode = Console.ReadLine();
@@ -270,7 +271,7 @@ namespace blog_management_v1._0.ApplicationLogic
 
                     if (chosedblog != null && chosedblog.BlogStatus == BlogStatus.Created)
                     {
-                        chosedblog.BlogStatus = BlogStatus.Rejected;                       
+                        chosedblog.BlogStatus = BlogStatus.Rejected;
                         Inbox message = new Inbox($"This blog {chosedblog.Id} Rejected by Admin", chosedblog.Owner);
                         inboxRepo.Add(message);
                         Console.WriteLine("Blog rejected...");
@@ -292,6 +293,7 @@ namespace blog_management_v1._0.ApplicationLogic
     {
         public static void UserPanel(string email)
         {
+            Repository<User, int> userrepository = new Repository<User, int>();
             Repository<Blog, string> blogrepeo = new Repository<Blog, string>();
             Repository<Comment, int> commentRepo = new Repository<Comment, int>();
             Repository<Inbox, int> inboxRepo = new Repository<Inbox, int>();
@@ -350,8 +352,8 @@ namespace blog_management_v1._0.ApplicationLogic
                 }
                 else if (command == "/my-blogs")
                 {
-
-                    List<Blog> blogs = blogrepeo.GetAll();
+                    BlogRepository blogRepository = new BlogRepository();
+                    List<Blog> blogs = blogRepository.GetAll();
                     int counter = 1;
 
                     foreach (Blog blog in blogs)
@@ -392,8 +394,9 @@ namespace blog_management_v1._0.ApplicationLogic
                 }
                 else if (command == "/inbox")
                 {
+                    InboxRepository inboxRepository = new InboxRepository();
                     int counter = 1;
-                   List<Inbox> inboxs = inboxRepo.GetAll();
+                    List<Inbox> inboxs = inboxRepository.GetAll();
 
                     foreach (Inbox inbox in inboxs)
                     {

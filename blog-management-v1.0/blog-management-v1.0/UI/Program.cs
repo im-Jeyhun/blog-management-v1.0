@@ -20,6 +20,7 @@ namespace blog_management_v1._0.UI
             Console.WriteLine("/login");
             Console.WriteLine("/show-blogs-with-comments");
             Console.WriteLine("/show-filtered-blogs-with-comments");
+            Console.WriteLine("//find-blog-by-code");
             Console.WriteLine("/exit");
 
             while (true)

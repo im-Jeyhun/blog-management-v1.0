@@ -36,7 +36,7 @@ namespace blog_management_v1._0.DataBase.Models
 
         public string GetCommentInfo()
         {
-            return $"[{CreatedAt}][{Owner.Name}{Owner.LastName}] - {Content}";
+            return $"[{CreatedAt}][{Owner.Name} {Owner.LastName}] - {Content}";
         }
     }
 }
