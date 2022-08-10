@@ -21,21 +21,20 @@ namespace blog_management_v1._0.ApplicationLogic.Services
         public static void ShowBlogs()
         {
             List<Blog> blogss = blogRepo.GetAll();
-            string titleFiler = Console.ReadLine(); // c#
+
             foreach (Blog blog in blogss)
             {
-                //blog с# nedir
-                if (blog.Title.Contains(titleFiler))
+
+
+                if (blog.BlogStatus == BlogStatus.Created)
                 {
-                    if (blog.BlogStatus == BlogStatus.Sended)
+                    Console.WriteLine(blog.GetBlogFullInfo());
+                    foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
                     {
-                        Console.WriteLine(blog.GetBlogFullInfo());
-                        foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
-                        {
-                            Console.WriteLine(comment.GetCommentInfo());
-                        }
+                        Console.WriteLine(comment.GetCommentInfo());
                     }
                 }
+
             }
         }
 

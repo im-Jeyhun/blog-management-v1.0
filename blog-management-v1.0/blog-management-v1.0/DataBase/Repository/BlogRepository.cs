@@ -12,7 +12,7 @@ namespace blog_management_v1._0.DataBase.Repository
     {
         static BlogRepository()
         {
-            Entries.Add(new Blog(UserRepository.GetByEmail("ceyhun@gmail.com"), "Revan", "Salam", BlogStatus.Sended, "BLCode"));
+            Entries.Add(new Blog(UserRepository.GetByEmail("ceyhun@gmail.com"), "Revan", "Salam", BlogStatus.Created, "BLCode"));
         }
         //static BlogRepository()
         //{

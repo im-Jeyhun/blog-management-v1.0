@@ -1,4 +1,5 @@
 ﻿using blog_management_v1._0.DataBase.Models.Common;
+using blog_management_v1._0.DataBase.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,18 @@ namespace blog_management_v1._0.DataBase.Models
 
         public User User { get; set; }
 
-        public Inbox(string notfication, User user)
+        public Inbox(string notfication, User user , int? id = null)
         {
             Notfication = notfication;
             User = user;
+            if(id != null)
+            {
+                Id = id.Value;
+            }
+            else
+            {
+                Id = UserRepository.IdCounter;
+            }
         }
     }
 }
