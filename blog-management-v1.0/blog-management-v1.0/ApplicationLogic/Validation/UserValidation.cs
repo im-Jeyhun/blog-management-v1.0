@@ -10,10 +10,6 @@ namespace blog_management_v1._0.ApplicationLogic.Validation
 {
     public partial class UserValidation
     {
-        public static bool IsLengthCorrect(string text, int startLengt, int endLength)
-        {
-            return text.Length >= startLengt && text.Length <= endLength;
-        }
 
         public static bool IsNameValid(string name)
         {
