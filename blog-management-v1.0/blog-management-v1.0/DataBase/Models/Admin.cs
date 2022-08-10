@@ -30,7 +30,7 @@ namespace blog_management_v1._0.DataBase.Models
 
         public override string GetUserInfo()
         {
-            return $"Istifadeci id : {Id} , Istifadeci adi : {Name} , soyadi : {LastName} , emaili : {Email} , qeydiyyat tarixi : {RegistrationDate}";
+            return $"Istifadeci adi : {Name} , soyadi : {LastName} , emaili : {Email} , qeydiyyat tarixi : {RegistrationDate}";
 
         }
     }

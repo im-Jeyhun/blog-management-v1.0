@@ -13,20 +13,7 @@ namespace blog_management_v1._0.DataBase.Repository
         static BlogRepository()
         {
             Entries.Add(new Blog(UserRepository.GetByEmail("ceyhun@gmail.com"), "Revan", "Salam", BlogStatus.Created, "BLCode"));
-        }
-        //static BlogRepository()
-        //{
-        //    SeedBlog();
-        //}
-
-        //public static void SeedBlog()
-        //{
-        //    User user = new User("Ceyhun", "Hacizada");
-
-        //    Entries.Add(new Blog(user, "ela", "cox ela", BlogStatus.Sended,"BL34"));
-
-
-        //}
+        }       
 
         static Random randomID = new Random();
 

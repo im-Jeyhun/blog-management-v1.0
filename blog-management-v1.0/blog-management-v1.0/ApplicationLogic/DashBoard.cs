@@ -352,7 +352,7 @@ namespace blog_management_v1._0.ApplicationLogic
 
                         if (blog.Owner == CurrentUser)
                         {
-                            Console.WriteLine(counter + "." + blog.GetBlogFullInfo());
+                            Console.WriteLine(counter + "." + blog.GetBlogInfo());
                             counter++;
                         }
                     }

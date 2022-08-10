@@ -10,5 +10,10 @@ namespace blog_management_v1._0.DataBase.Repository
 {
     public class InboxRepository : Repository<Inbox, int>
     {
+        static InboxRepository()
+        {
+            UserRepository userRepo = new UserRepository();
+            Entries.Add(new Inbox("Default message", userRepo.Get(u => u.Email == "ceyhun@gmail.com")));
+        }
     }
 }

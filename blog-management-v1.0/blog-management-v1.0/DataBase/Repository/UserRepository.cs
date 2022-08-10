@@ -9,7 +9,7 @@ namespace blog_management_v1._0.DataBase.Repository
 {
     public class UserRepository:Common.Repository<User, int>
     {
-        private static int _idCounter;
+        private static int _idCounter ;
 
         public static int IdCounter
         {
@@ -29,7 +29,7 @@ namespace blog_management_v1._0.DataBase.Repository
         public static void SeedUsers()
         {
             Entries.Add(new User("ceyhun", "hacizada", "ceyhun@gmail.com", "123321"));
-            Entries.Add(new Admin("ceyhun", "hacizada", "ceyhunhaci@gmail.com", "123321", 1));
+            Entries.Add(new Admin("ceyhun", "hacizada", "ceyhunhaci@gmail.com", "123321"));
 
 
         }

@@ -14,19 +14,7 @@ namespace blog_management_v1._0.DataBase.Repository
             BlogRepository blogRepository = new BlogRepository();
             Entries.Add(new Comment(blogRepository.Get(a => a.Id == "BLCode"), UserRepository.GetByEmail("ceyhun@gmail.com"), "Salam"));
         }
-        //static CommentRepository()
-        //{
-        //    SeedUsers();
-        //}
-
-        //public static void SeedUsers()
-        //{
-        //    User user = new User("ceyhun", "haczada");
-        //    Blog blog = new Blog(user, "Blog", "Test blog" , BlogStatus.Sended);
-        //    Comment comment = new Comment(blog, user, "Test eladir");
-        //    Entries.Add(comment);
-
-        //}
+    
 
 
     }
