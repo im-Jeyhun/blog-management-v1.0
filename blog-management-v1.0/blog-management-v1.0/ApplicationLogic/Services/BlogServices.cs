@@ -26,9 +26,9 @@ namespace blog_management_v1._0.ApplicationLogic.Services
             {
 
 
-                if (blog.BlogStatus == BlogStatus.Created)
+                if (blog.BlogStatus == BlogStatus.Approved)
                 {
-                    Console.WriteLine(blog.GetBlogFullInfo());
+                    Console.WriteLine(blog.GetBlogInfo());
                     foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
                     {
                         Console.WriteLine(comment.GetCommentInfo());

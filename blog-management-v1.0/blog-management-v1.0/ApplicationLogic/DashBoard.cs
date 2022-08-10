@@ -108,7 +108,7 @@ namespace blog_management_v1._0.ApplicationLogic
                 }
                 else if (command == "/show-admins")
                 {
-                    List<Admin> admins = adminrepository.GetAll();
+                    List<User> admins = userrepository.GetAll();
 
 
                     foreach (User admin in admins)
@@ -215,7 +215,7 @@ namespace blog_management_v1._0.ApplicationLogic
                         {
                             Console.WriteLine("Istifadeci tapilmadi");
                         }
-                        else if (userr is User)
+                        else if (userr is not Admin)
                         {
                             Console.WriteLine(userr.GetUserInfo());
                         }
@@ -253,7 +253,7 @@ namespace blog_management_v1._0.ApplicationLogic
                     if (chosedblog != null && chosedblog.BlogStatus == BlogStatus.Created)
                     {
                         chosedblog.BlogStatus = BlogStatus.Approved;
-                        Inbox message = new Inbox($"This blog {chosedblog.Id} Approved by Admin", CurrentUser);
+                        Inbox message = new Inbox($"This blog {chosedblog.Id} Approved by Admin", chosedblog.Owner);
                         inboxRepo.Add(message);
                     }
                     else
@@ -270,7 +270,7 @@ namespace blog_management_v1._0.ApplicationLogic
                     if (chosedblog != null && chosedblog.BlogStatus == BlogStatus.Created)
                     {
                         chosedblog.BlogStatus = BlogStatus.Rejected;
-                        Inbox message = new Inbox($"This blog {chosedblog.Id} Rejected by Admin", CurrentUser);
+                        Inbox message = new Inbox($"This blog {chosedblog.Id} Rejected by Admin", chosedblog.Owner);
                         inboxRepo.Add(message);
                     }
                     else
@@ -382,7 +382,9 @@ namespace blog_management_v1._0.ApplicationLogic
                 else if (command == "/inbox")
                 {
                     int counter = 1;
-                    foreach (Inbox inbox in inboxRepo.GetAll())
+                   List<Inbox> inboxs = inboxRepo.GetAll();
+
+                    foreach (Inbox inbox in inboxs)
                     {
                         if (inbox.User == CurrentUser)
                         {

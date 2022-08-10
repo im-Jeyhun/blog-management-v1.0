@@ -59,7 +59,7 @@ namespace blog_management_v1._0.DataBase.Models
 
         public virtual string GetUserInfo()
         {
-            return $"Istifadeci adi : {Name} , soyadi : {LastName} , emaili : {Email} ";
+            return $"{Id}Istifadeci adi : {Name} , soyadi : {LastName} , emaili : {Email} ";
 
         }
     }
