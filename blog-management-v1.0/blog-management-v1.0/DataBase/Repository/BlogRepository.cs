@@ -12,7 +12,7 @@ namespace blog_management_v1._0.DataBase.Repository
     {
         static BlogRepository()
         {
-            Entries.Add(new Blog(UserRepository.GetByEmail("ceyhun@gmail.com"), "Revan", "Salam", BlogStatus.Created, "BLCode"));
+            Entries.Add(new Blog(UserRepository.GetByEmail("ceyhun@gmail.com"), "Revan", "Salam", BlogStatus.Created, "BL10545"));
         }       
 
         static Random randomID = new Random();
@@ -24,7 +24,7 @@ namespace blog_management_v1._0.DataBase.Repository
         {
             get
             {
-                _code = "BL" + randomID.Next();
+                _code = "BL" + randomID.Next(10000,100000);
                 return _code;
             }
 
