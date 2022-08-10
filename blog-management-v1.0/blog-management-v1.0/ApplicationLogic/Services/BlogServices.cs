@@ -21,7 +21,7 @@ namespace blog_management_v1._0.ApplicationLogic.Services
         public static void ShowBlogs()
         {
             List<Blog> blogss = blogRepo.GetAll();
-
+            int counter = 1;
             foreach (Blog blog in blogss)
             {
 
@@ -31,7 +31,8 @@ namespace blog_management_v1._0.ApplicationLogic.Services
                     Console.WriteLine(blog.GetBlogInfo());
                     foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
                     {
-                        Console.WriteLine(comment.GetCommentInfo());
+                        Console.WriteLine(counter +"."+ comment.GetCommentInfo());
+                        counter++;
                     }
                 }
 

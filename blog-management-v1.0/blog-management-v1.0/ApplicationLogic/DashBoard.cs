@@ -255,6 +255,7 @@ namespace blog_management_v1._0.ApplicationLogic
                         chosedblog.BlogStatus = BlogStatus.Approved;
                         Inbox message = new Inbox($"This blog {chosedblog.Id} Approved by Admin", chosedblog.Owner);
                         inboxRepo.Add(message);
+                        Console.WriteLine("Blog Approved...");
                     }
                     else
                     {
@@ -269,9 +270,10 @@ namespace blog_management_v1._0.ApplicationLogic
 
                     if (chosedblog != null && chosedblog.BlogStatus == BlogStatus.Created)
                     {
-                        chosedblog.BlogStatus = BlogStatus.Rejected;
+                        chosedblog.BlogStatus = BlogStatus.Rejected;                       
                         Inbox message = new Inbox($"This blog {chosedblog.Id} Rejected by Admin", chosedblog.Owner);
                         inboxRepo.Add(message);
+                        Console.WriteLine("Blog rejected...");
                     }
                     else
                     {
@@ -319,6 +321,7 @@ namespace blog_management_v1._0.ApplicationLogic
 
                     Blog blog = new Blog(CurrentUser, blogTitle, blogContent, BlogStatus.Created);
                     blogrepeo.Add(blog);
+                    Console.WriteLine("Blog successfully added.");
 
 
 
@@ -340,6 +343,10 @@ namespace blog_management_v1._0.ApplicationLogic
 
                         Console.WriteLine("Comment added...");
                     }
+                    else
+                    {
+                        Console.WriteLine("Blog not finded..");
+                    }
                 }
                 else if (command == "/my-blogs")
                 {
@@ -354,6 +361,10 @@ namespace blog_management_v1._0.ApplicationLogic
                         {
                             Console.WriteLine(counter + "." + blog.GetBlogInfo());
                             counter++;
+                        }
+                        else
+                        {
+                            Console.WriteLine("You dont have blog..");
                         }
                     }
 

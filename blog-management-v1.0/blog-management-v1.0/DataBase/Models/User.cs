@@ -42,15 +42,7 @@ namespace blog_management_v1._0.DataBase.Models
 
 
         }
-        // bu normal elave etmek ucun.
-        //public User(string name, string lastName, string email, string password)
-        //{
-        //    Name = name;
-        //    LastName = lastName;
-        //    Email = email;
-        //    Password = password;
-        //}
-
+   
         public User(string name, string lastName)
         {
             Name = name;
