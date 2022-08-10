@@ -6,4 +6,8 @@
     <RootNamespace>blog_management_v1._0</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="ApplicationLogic\" />
+  </ItemGroup>
+
 </Project>
