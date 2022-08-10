@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace blog_management_v1._0.DataBase.Models
 {
-    public class User
+    public class User 
     {
         public string Name { get; set; }
 
