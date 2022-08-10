@@ -12,7 +12,7 @@ namespace blog_management_v1._0.DataBase.Repository
     {
         static BlogRepository()
         {
-            Entries.Add(new Blog(UserRepository.GetByEmail("ceyhun@gmail.com"), "Revan", "Salam", BlogStatus.Created, "BL10545"));
+            Entries.Add(new Blog(UserRepository.GetByEmail("ceyhun@gmail.com"), "How to learn programming", "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", BlogStatus.Created, "BL10545"));
         }       
 
         static Random randomID = new Random();

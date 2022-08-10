@@ -235,6 +235,8 @@ namespace blog_management_v1._0.ApplicationLogic
                             if (blog.BlogStatus == BlogStatus.Created)
                             {
                                 Console.WriteLine(blog.GetBlogInfo());
+                                Console.WriteLine("______________________________________________________________________________");
+                                Console.WriteLine();
                                 //foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
                                 //{
                                 //    Console.WriteLine(comment.GetCommentInfo());
@@ -304,6 +306,7 @@ namespace blog_management_v1._0.ApplicationLogic
             while (true)
             {
                 Console.WriteLine("User commands are : /update-info , /report-user ,/delete ,/inbox, /add-blog , /add-comment , /my-blogs , /logout ");
+                Console.Write("Insert suitable command : ");
                 string command = Console.ReadLine();
 
                 if (command == "/update-info")
@@ -363,6 +366,8 @@ namespace blog_management_v1._0.ApplicationLogic
                         {
                             Console.WriteLine(counter + "." + blog.GetBlogInfo());
                             counter++;
+                            Console.WriteLine("______________________________________________________________________________");
+                            Console.WriteLine();
                         }
                         else
                         {

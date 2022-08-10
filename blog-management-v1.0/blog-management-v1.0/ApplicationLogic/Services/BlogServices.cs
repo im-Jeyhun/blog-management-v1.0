@@ -22,23 +22,27 @@ namespace blog_management_v1._0.ApplicationLogic.Services
         {
             List<Blog> blogss = blogRepo.GetAll();
             int counter = 1;
+
             foreach (Blog blog in blogss)
             {
-
-
                 if (blog.BlogStatus == BlogStatus.Approved)
                 {
-                    Console.WriteLine(blog.GetBlogInfo());
-                    foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
+                    Console.WriteLine(counter + "." + blog.GetBlogInfo());
+                    List<Comment> commentss = commentRepo.GetAll(c => c.Blog == blog);
+
+                    for (int i = 0; i < commentss.Count; i++)
                     {
-                        Console.WriteLine(counter + "." + comment.GetCommentInfo());
-                        counter++;
+                        Console.WriteLine($"{i + 1} {commentss[i].GetCommentInfo()}");
                     }
+                    Console.WriteLine("______________________________________________________________________________");
+                    Console.WriteLine();
+
                 }
                 else
                 {
                     Console.WriteLine("Aprroved blogs couldnt finded");
                 }
+                counter++;
 
             }
         }
@@ -141,18 +145,22 @@ namespace blog_management_v1._0.ApplicationLogic.Services
                 {
                     if (blog.Title.Contains(title))
                     {
-                        Console.WriteLine(blog.GetBlogInfo());
-                        foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
+                        Console.WriteLine(counter + "." + blog.GetBlogInfo());
+                        List<Comment> commentss = commentRepo.GetAll(c => c.Blog == blog);
+
+                        for (int i = 0; i < commentss.Count; i++)
                         {
-                            Console.WriteLine(counter + "." + comment.GetCommentInfo());
-                            counter++;
+                            Console.WriteLine($"{i + 1} {commentss[i].GetCommentInfo()}");
                         }
+                        Console.WriteLine("______________________________________________________________________________");
+                        Console.WriteLine();
 
                     }
                     else
                     {
                         Console.WriteLine($"Whit this {title} couldnt finded blog ");
                     }
+                    counter++;
                 }
 
             }
@@ -165,18 +173,23 @@ namespace blog_management_v1._0.ApplicationLogic.Services
                 {
                     if (blog.Owner.Name.Contains(blogOwner))
                     {
-                        Console.WriteLine(blog.GetBlogInfo());
-                        foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
+                        Console.WriteLine(counter + "." + blog.GetBlogInfo());
+                        List<Comment> commentss = commentRepo.GetAll(c => c.Blog == blog);
+
+                        for (int i = 0; i < commentss.Count; i++)
                         {
-                            Console.WriteLine(counter + "." + comment.GetCommentInfo());
-                            counter++;
-                        };
+                            Console.WriteLine($"{i + 1} {commentss[i].GetCommentInfo()}");
+                        }
+                        Console.WriteLine("______________________________________________________________________________");
+                        Console.WriteLine();
                     }
                     else
                     {
                         Console.WriteLine($"This {blogOwner}'s blogs couldnt finded ");
                     }
+                    counter++;
                 }
+
             }
             else
             {
