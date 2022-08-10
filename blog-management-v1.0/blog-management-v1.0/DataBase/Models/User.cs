@@ -43,13 +43,13 @@ namespace blog_management_v1._0.DataBase.Models
 
         }
         // bu normal elave etmek ucun.
-        public User(string name, string lastName, string email, string password)
-        {
-            Name = name;
-            LastName = lastName;
-            Email = email;
-            Password = password;
-        }
+        //public User(string name, string lastName, string email, string password)
+        //{
+        //    Name = name;
+        //    LastName = lastName;
+        //    Email = email;
+        //    Password = password;
+        //}
 
         public User(string name, string lastName)
         {
@@ -59,7 +59,7 @@ namespace blog_management_v1._0.DataBase.Models
 
         public virtual string GetUserInfo()
         {
-            return $"Istifadeci adi : {Name} , soyadi : {LastName} , emaili : {Email} ";
+            return $"{Id}Istifadeci adi : {Name} , soyadi : {LastName} , emaili : {Email} ";
 
         }
     }
