@@ -1,4 +1,5 @@
 ﻿using blog_management_v1._0.DataBase.Models.Common;
+using blog_management_v1._0.DataBase.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,16 +18,10 @@ namespace blog_management_v1._0.DataBase.Models
 
         public string Password { get; set; }
 
-        public static List<Report> Reports { get; set; } = new List<Report>();
         protected DateTime RegistrationDate { get; } = DateTime.Now;
 
 
-        public User(List<Report> report)
-        {
-            Reports = report;
-        }
-
-        //bu sildikden sonra elavet etmek ucun
+      //bu sildikden sonra elavet etmek ucun
         public User(string name, string lastName, string email, string password, int? id = null)
         {
 
