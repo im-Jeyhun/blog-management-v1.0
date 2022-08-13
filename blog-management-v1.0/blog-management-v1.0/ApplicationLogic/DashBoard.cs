@@ -381,14 +381,22 @@ namespace blog_management_v1._0.ApplicationLogic
                     Console.Write("Insert Blog code for delete : ");
                     string blogId = Console.ReadLine();
                     Blog findedBlog = blogrepeo.GetById(blogId);
-                    Comment findedComment = commentRepo.Get(c => c.Blog == findedBlog);
-                    Inbox findedMessage = inboxRepo.Get(m => m.User == findedBlog.Owner);
+                    List<Comment> findedComments = commentRepo.GetAll(c => c.Blog == findedBlog);
+                    List<Inbox> findedMessages = inboxRepo.GetAll(m => m.Notfication.Contains(findedBlog.Id));
                     if (findedBlog.Owner == CurrentUser)
                     {
 
                         blogrepeo.Delete(findedBlog);
-                        commentRepo.Delete(findedComment);
-                        inboxRepo.Delete(findedMessage);
+                        foreach (Comment comment in findedComments)
+                        {
+
+                            commentRepo.Delete(comment);
+                        }
+                        foreach (Inbox message in findedMessages)
+                        {
+
+                            inboxRepo.Delete(message);
+                        }
                         Console.WriteLine($"Your {findedBlog.Title} is deleted.. ");
                     }
                     else
