@@ -151,24 +151,32 @@ namespace blog_management_v1._0.ApplicationLogic.Services
                 int counter = 1;
                 foreach (Blog blog in blogRepo.GetAll())
                 {
-                    if (blog.Title.Contains(title))
+                    if (blog.BlogStatus == BlogStatus.Approved)
                     {
-                        Console.WriteLine(counter + "." + blog.GetBlogInfo());
-                        List<Comment> commentss = commentRepo.GetAll(c => c.Blog == blog);
 
-                        for (int i = 0; i < commentss.Count; i++)
+                        if (blog.Title.Contains(title))
                         {
-                            Console.WriteLine($"{i + 1} {commentss[i].GetCommentInfo()}");
-                        }
-                        Console.WriteLine("______________________________________________________________________________");
-                        Console.WriteLine();
+                            Console.WriteLine(counter + "." + blog.GetBlogInfo());
+                            List<Comment> commentss = commentRepo.GetAll(c => c.Blog == blog);
 
+                            for (int i = 0; i < commentss.Count; i++)
+                            {
+                                Console.WriteLine($"{i + 1} {commentss[i].GetCommentInfo()}");
+                            }
+                            Console.WriteLine("______________________________________________________________________________");
+                            Console.WriteLine();
+
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Whit this {title} couldnt foundd blog ");
+                        }
+                        counter++;
                     }
                     else
                     {
-                        Console.WriteLine($"Whit this {title} couldnt finded blog ");
+                        Console.WriteLine($"With this {title} title appreoved blogs not found in system..");
                     }
-                    counter++;
                 }
 
             }
@@ -179,23 +187,31 @@ namespace blog_management_v1._0.ApplicationLogic.Services
                 int counter = 1;
                 foreach (Blog blog in blogRepo.GetAll())
                 {
-                    if (blog.Owner.Name.Contains(blogOwner))
+                    if (blog.BlogStatus == BlogStatus.Approved)
                     {
-                        Console.WriteLine(counter + "." + blog.GetBlogInfo());
-                        List<Comment> commentss = commentRepo.GetAll(c => c.Blog == blog);
 
-                        for (int i = 0; i < commentss.Count; i++)
+                        if (blog.Owner.Name.Contains(blogOwner))
                         {
-                            Console.WriteLine($"{i + 1} {commentss[i].GetCommentInfo()}");
+                            Console.WriteLine(counter + "." + blog.GetBlogInfo());
+                            List<Comment> commentss = commentRepo.GetAll(c => c.Blog == blog);
+
+                            for (int i = 0; i < commentss.Count; i++)
+                            {
+                                Console.WriteLine($"{i + 1} {commentss[i].GetCommentInfo()}");
+                            }
+                            Console.WriteLine("______________________________________________________________________________");
+                            Console.WriteLine();
                         }
-                        Console.WriteLine("______________________________________________________________________________");
-                        Console.WriteLine();
+                        else
+                        {
+                            Console.WriteLine($"This {blogOwner}'s blogs couldnt finded ");
+                        }
+                        counter++;
                     }
                     else
                     {
-                        Console.WriteLine($"This {blogOwner}'s blogs couldnt finded ");
+                        Console.WriteLine($"With this {blogOwner} first name appreoved blogs not found in system..");
                     }
-                    counter++;
                 }
 
             }
