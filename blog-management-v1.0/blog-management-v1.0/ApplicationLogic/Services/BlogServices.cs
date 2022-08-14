@@ -117,11 +117,19 @@ namespace blog_management_v1._0.ApplicationLogic.Services
             int counter = 1;
             if (findedBlog != null)
             {
-                Console.WriteLine(findedBlog.GetBlogInfo());
-                foreach (Comment comment in commentRepo.GetAll(c => c.Blog == findedBlog))
+                if (findedBlog.BlogStatus == BlogStatus.Approved)
                 {
-                    Console.WriteLine(counter + "." + comment.GetCommentInfo());
-                    counter++;
+
+                    Console.WriteLine(findedBlog.GetBlogInfo());
+                    foreach (Comment comment in commentRepo.GetAll(c => c.Blog == findedBlog))
+                    {
+                        Console.WriteLine(counter + "." + comment.GetCommentInfo());
+                        counter++;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"{findedBlog.Title} is not approved or {findedBlog.Title} is rejected..");
                 }
 
             }
