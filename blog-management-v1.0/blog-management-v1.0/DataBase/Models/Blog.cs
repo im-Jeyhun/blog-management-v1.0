@@ -29,7 +29,7 @@ namespace blog_management_v1._0.DataBase.Models
             Owner = owner;
             Title = title;
             Content = content;
-            if (id != null)
+            if (id != null && BlogRepository.IsIdExists(id))
             {
                 Id = id;
             }

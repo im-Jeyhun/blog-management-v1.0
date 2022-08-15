@@ -230,19 +230,22 @@ namespace blog_management_v1._0.ApplicationLogic
 
                     foreach (Blog blog in blogs)
                     {
+
                         if (blog.BlogStatus == BlogStatus.Created)
                         {
-                            if (blog.BlogStatus == BlogStatus.Created)
-                            {
-                                Console.WriteLine(blog.GetBlogInfo());
-                                Console.WriteLine("______________________________________________________________________________");
-                                Console.WriteLine();
-                                //foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
-                                //{
-                                //    Console.WriteLine(comment.GetCommentInfo());
-                                //}
-                            }
+                            Console.WriteLine(blog.GetBlogInfo());
+                            Console.WriteLine("______________________________________________________________________________");
+                            Console.WriteLine();
+                            //foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
+                            //{
+                            //    Console.WriteLine(comment.GetCommentInfo());
+                            //}
                         }
+                        else
+                        {
+                            Console.WriteLine("In system couldnt found Auditing blog..");
+                        }
+
 
                     }
 
@@ -288,6 +291,10 @@ namespace blog_management_v1._0.ApplicationLogic
                     Program.Main(new string[] { });
                     break;
                 }
+                else
+                {
+                    Console.WriteLine("Command not found ....");
+                }
             }
         }
     }
@@ -320,11 +327,11 @@ namespace blog_management_v1._0.ApplicationLogic
                 else if (command == "/add-blog")
                 {
                     Console.WriteLine($"Dear {user.Name} Add your blog's title");
-                    string blogTitle = BlogServices.GetBlogTitle();
+                    //string blogTitle = BlogServices.GetBlogTitle();
                     Console.WriteLine(" Add your blog  ");
-                    string blogContent = BlogServices.GetBlogContent();
+                    //string blogContent = BlogServices.GetBlogContent();
 
-                    Blog blog = new Blog(CurrentUser, blogTitle, blogContent, BlogStatus.Created);
+                    Blog blog = new Blog(CurrentUser, BlogServices.GetBlogTitle(), BlogServices.GetBlogContent(), BlogStatus.Created);
                     blogrepeo.Add(blog);
                     Console.WriteLine("Blog successfully added.");
 

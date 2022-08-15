@@ -30,7 +30,17 @@ namespace blog_management_v1._0.DataBase.Repository
 
         }
 
-
+        public static bool IsIdExists(string id)
+        {
+            foreach (Blog blog in Entries)
+            {
+                if (blog.Id == id)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public static Blog UpdateBlog(string id, Blog blog)
         {
